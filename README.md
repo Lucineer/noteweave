@@ -1,72 +1,63 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Lucineer/capitaine/master/docs/capitaine-logo.jpg" alt="Cocapn" width="120">
-</p>
+# NoteWeave
+You take notes. Most of the time, they just sit there.
 
-<h1 align="center">Noteweave</h1>
+NoteWeave is an agent for the Cocapn Fleet that reads your notes and suggests connections between them. It helps build a graph from your existing writing without manual tagging.
 
-<p align="center">Note-taking and knowledge weaving agent. Part of the Lucineer fleet.</p>
+---
 
-<p align="center">
-  <a href="#quick-start">Quick Start</a> ·
-  <a href="#the-fleet">The Fleet</a> ·
-  <a href="https://github.com/Lucineer/capitaine">Capitaine</a>
-</p>
+## Purpose
+It can be tedious to manually organize every note you write. This agent is designed to work with the notes you already have, running on infrastructure you control.
+
+---
+
+## How It Works
+- **No External Database**: Your git repository stores the agent's state and graph.
+- **Non-Destructive**: It does not edit your original note files. Links and generated notes are added as separate, versioned commits.
+- **Self-Contained**: Fork the repository to run your own copy. It requires no external accounts.
+- **Runs on Cloudflare Workers**: The agent is designed for serverless execution.
+
+---
+
+## Features
+*   **Semantic Linking**: Suggests connections between notes based on their content.
+*   **Graph Synthesis**: Can generate summary notes that reference multiple source notes.
+*   **Git-Native**: All agent output is committed to your repository, maintaining a full history.
+*   **Fork-First**: This is code to run yourself, not a hosted service.
+*   **BYOK (Bring Your Own Keys)**: You provide API keys via environment secrets. The code contains no built-in credentials.
+*   **Stateless Design**: The agent reads from and writes to your repository directly.
+
+**Limitation**: The accuracy of suggested links depends on the capabilities of the underlying LLM you configure.
+
+---
+
+## Try the Reference Agent
+A public instance is available for testing:
+[https://the-fleet.casey-digennaro.workers.dev/agents/noteweave](https://the-fleet.casey-digennaro.workers.dev/agents/noteweave)
 
 ---
 
 ## Quick Start
+1.  Fork this repository to your GitHub account.
+2.  Deploy it to Cloudflare Workers.
+3.  Configure your model API keys via environment secrets.
 
-```bash
-git clone https://github.com/Lucineer/noteweave.git
-cd noteweave
-# Follow repo-specific setup instructions
-```
+---
 
-## The Fleet
+## Configuration
+The agent requires API keys for the LLM provider of your choice (e.g., OpenAI, Anthropic). Set these as secrets in your Cloudflare Workers deployment.
 
-Noteweave is one of 110+ vessels in the Lucineer fleet. Every vessel is a git-native repo-agent — the repo IS the agent.
+---
 
-<details>
-<summary><strong>⚓ The Fleet</strong></summary>
+## Contributing
+Contributions are welcome. Please open an issue to discuss significant changes.
 
-**Flagship vessels**
-- [Capitaine (flagship)](https://github.com/Lucineer/capitaine)
-- [personallog-ai](https://github.com/Lucineer/personallog-ai)
-- [businesslog-ai](https://github.com/Lucineer/businesslog-ai)
-- [studylog-ai](https://github.com/Lucineer/studylog-ai)
-- [makerlog-ai](https://github.com/Lucineer/makerlog-ai)
-- [playerlog-ai](https://github.com/Lucineer/playerlog-ai)
-- [dmlog-ai](https://github.com/Lucineer/dmlog-ai)
-- [reallog-ai](https://github.com/Lucineer/reallog-ai)
-- [deckboss-ai](https://github.com/Lucineer/deckboss-ai)
+---
 
-**Fleet services**
-- [Git-Agent (minimal)](https://github.com/Lucineer/git-agent)
-- [Fleet Catalog](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
-- [Fleet Orchestrator](https://github.com/Lucineer/fleet-orchestrator)
-- [Dead Reckoning Engine](https://github.com/Lucineer/dead-reckoning-engine)
-- [Dream Engine](https://github.com/Lucineer/dream-engine)
-- [Seed UI](https://github.com/Lucineer/seed-ui)
+## License & Attribution
+MIT License. Created as part of the Cocapn Fleet by Superinstance & Lucineer (DiGennaro et al.).
 
-**For power users**
-- [Cocapn Lite (tabula rasa)](https://github.com/Lucineer/cocapn-lite)
-- [Cocapn (core)](https://github.com/Lucineer/cocapn)
-- [ZeroClaw (framework)](https://github.com/Lucineer/zeroclaw)
+---
 
-[View all 110+ repos →](https://github.com/orgs/Lucineer/repositories)
-[Fleet manifest →](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
-
-</details>
-
-## Philosophy
-
-> The repo IS the agent. Fork it, give it a heartbeat, and wake up tomorrow to see where it sailed in the night.
-
-- **Fork-first** — Power users fork and customize. Casual users visit the domain.
-- **Git as ground truth** — The commit graph IS the state of the world.
-- **BYOK v2** — Zero keys in code. All keys via secrets store.
-- **Soft actualization** — Vessels evolve gently based on usage, not hard updates.
-
-## License
-
-MIT · Superinstance & Lucineer (DiGennaro et al.)
+<div align="center">
+  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> · <a href="https://cocapn.ai">Cocapn</a>
+</div>
